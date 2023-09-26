@@ -4,6 +4,7 @@ var data = "";
 //     btnClicking();
 // })
 
+// localStorage.clear();
 function encryption() {
   document.querySelector("#encrypt-btn").addEventListener("click", function () {
     // get the password
@@ -22,7 +23,7 @@ function encryption() {
 
     // convert it into imojis
     str.forEach((ele) => {
-      data += `&#128${ele.charCodeAt()}`;
+      data += `&#128${ele.charCodeAt()} `;
     });
 
     // console.log(addData);
@@ -45,7 +46,7 @@ function encryption() {
       addData = [{ 'pass': pass, 'text': input, 'data': data }];
     }
 
-    localStorage.setItem("data1", JSON.stringify(addData));
+    localStorage.setItem(`data1`, JSON.stringify(addData));
   });
 }
 
@@ -55,21 +56,25 @@ function decryption() {
         var data2 = '';
         var text2 = document.querySelector("#emoji-msg").value
         var finalPass = document.querySelector("#password").value;
-        var user = JSON.parse(localStorage.getItem("data1"));
+        var user = JSON.parse(localStorage.getItem(`data1`));
         // console.log(user)
         var str2 = text2.split("");
         str2.forEach(ele => {
-                data2 += `&#${(ele.codePointAt(0))}`;
+                data2 += `&#${(ele.codePointAt(0))} `;
+                // data2 += `&#$(element.charCodeAt()) * Math.floor(Math.random() * 10)`;
                 // console.log((element.charCodeAt()) * Math.floor(Math.random() * 10))
         });
         console.log(data2);
-        var found;
+        var found={};
         for(let i of user){
+            console.log(i);
             if(i.data == data2){
                 found = i;
-                // console.log(i)
+                console.log(i);
             }
         }
+        console.log(found);
+        console.log(data2);
         if (found.data === data2) {
             console.log("jay ho")
             document.querySelector(".result").style.display = `block`
@@ -84,6 +89,7 @@ function decryption() {
     })
 
 }
+
 function btnClicking() {
   document.querySelector(".decrypt").addEventListener("click", function () {
     document.querySelector(".decryption").style.display = "block";
