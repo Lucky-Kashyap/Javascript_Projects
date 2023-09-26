@@ -1,5 +1,5 @@
-let decryptbtn = document.querySelector(".decryption");
-var addData = "";
+var data = "";
+
 // decryptbtn.addEventListener('click',()=>{
 //     btnClicking();
 // })
@@ -22,30 +22,30 @@ function encryption() {
 
     // convert it into imojis
     str.forEach((ele) => {
-      addData += `&#128${ele.charCodeAt()}`;
+      data += `&#128${ele.charCodeAt()}`;
     });
 
     // console.log(addData);
 
     document.querySelector(".result").style.display = "block";
 
-    document.querySelector(".result").innerHTML = addData;
+    document.querySelector(".result").innerHTML = data;
 
-    let data = [];
+    let addData = [];
 
-    data = [{ 'pass': pass, 'text': input, 'add': addData }];
+    addData = [{ 'pass': pass, 'text': input, 'data': data }];
 
     // console.log(data);
 
     if (JSON.parse(localStorage.getItem("data1"))) {
-      data = JSON.parse(localStorage.getItem("data1"));
+      addData = JSON.parse(localStorage.getItem("data1"));
     //   console.log(data);
-      data.push({ 'pass': pass, 'text': input, 'add': addData });
+      addData.push({ 'pass': pass, 'text': input, 'data': data });
     } else {
-      data = [{ 'pass': pass, 'text': input, 'add': addData }];
+      addData = [{ 'pass': pass, 'text': input, 'data': data }];
     }
 
-    localStorage.setItem("data1", JSON.stringify(data));
+    localStorage.setItem("data1", JSON.stringify(addData));
   });
 }
 
@@ -55,23 +55,23 @@ function decryption() {
         var data2 = '';
         var text2 = document.querySelector("#emoji-msg").value
         var finalPass = document.querySelector("#password").value;
-        var user = JSON.parse(localStorage.getItem('data1'));
+        var user = JSON.parse(localStorage.getItem("data1"));
         // console.log(user)
-        var str2 = text2.split(" ");
+        var str2 = text2.split("");
         str2.forEach(ele => {
-                data2 += `&#${(ele.codePointAt(0))}`
+                data2 += `&#${(ele.codePointAt(0))}`;
                 // console.log((element.charCodeAt()) * Math.floor(Math.random() * 10))
         });
         console.log(data2);
         var found;
         for(let i of user){
-            if(i.addData == data2){
+            if(i.data == data2){
                 found = i;
                 // console.log(i)
             }
         }
-        if (found.addData === data2) {
-            // console.log("jay ho")
+        if (found.data === data2) {
+            console.log("jay ho")
             document.querySelector(".result").style.display = `block`
             document.querySelector(".result").style.color = `#eee`
 
@@ -113,8 +113,9 @@ function btnClicking() {
   });
 }
 
-btnClicking();
-
 encryption();
 
 decryption();
+
+btnClicking();
+
