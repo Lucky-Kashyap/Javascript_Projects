@@ -4,6 +4,23 @@ let decryptbtn = document.querySelector('.decryption');
 //     btnClicking();
 // })
 
+function encryption(){
+    document.querySelector('#encrypt-btn').addEventListener('click',function(){
+        
+        
+        // get the password
+
+        var pass = document.getElementById("pass").value;
+        console.log(pass)
+
+
+        // get the input
+
+        var input = document.getElementById("text-msg").value;
+        console.log(input)
+    })
+}
+
 function btnClicking(){
     document.querySelector(".decrypt").addEventListener("click", function () {
         
@@ -27,3 +44,4 @@ function btnClicking(){
 
 
 btnClicking();
+encryption();
