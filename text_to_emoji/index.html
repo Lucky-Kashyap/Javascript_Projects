@@ -3,18 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Text_To_Emoji</title>
+    <title>Encrypt Text to Emojis</title>
     
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" integrity="sha512-siarrzI1u3pCqFG2LEzi87McrBmq6Tp7juVsdmGY1Dr8Saw+ZBAzDzrGwX3vgxX1NkioYNCFOVC0GpDPss10zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
     <link rel="stylesheet" href="css/style.css" />
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous' defer></script>
   </head>
   <body>
     <div class="main">
-      <h1>Text</h1>
+      <h1>Text   <span><img src="img/arrow.png" alt=""></span>Emojis</h1>
       
-      <i class="fa-thin fa-arrow-right fa-beat"></i>
-      <i style='font-size:24px' class='fas'>&#xf061;</i>
+      <div class="encrypt-data">
+        <h3 class="encrypt"><span><img src="img/lock.png" alt="lock"></span>Encrypt Text</h3>
+        <h3 class="decrypt"><span><img src="img/unlock.png" alt="unlock"></span>Decrypt Emojis</h3>
+      </div>
+      <div class="encryption">
+        <h5>1. Type a Message</h5>
+        <textarea placeholder="Hello World or write some javascript code." id="text-msg" cols="30" rows="10"></textarea>
+        <h5>2. Set a Password</h5>
+        <input type="password" id="pass">
+        <button id="encryt-btn"><span><img src="img/lock.png" alt="encrypt"></span>Encrypt</button>
+      </div>
+
+      <div class="decryption">
+        <h5>1. Paste encrypted emojis</h5>
+        <textarea placeholder="Paste encrypted emojis here" id="emoji-msg" cols="30" rows="10"></textarea>
+        <h5>2. Type a Password</h5>
+        <input type="password" placeholder="E.g. 1234" id="password">
+        <h5>3. Decrypt Emojis</h5>
+        <button id="decryt-btn"><span><img src="img/unlock.png" alt="decrypt"></span>Decrypt Emojis</button>
+      </div>
+      
+    
     </div>
   </body>
 </html>
