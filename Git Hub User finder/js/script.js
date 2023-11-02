@@ -4,6 +4,7 @@ let userInfo = document.querySelector('.user-info .card');
 let reposInfoDiv = document.querySelector('.reposInfo')
 let theme = document.querySelector('.dark');
 let body = document.querySelector('body');
+let card  = document.createElement('card');
 // let card = document.querySelector('.');
 
 
@@ -48,8 +49,13 @@ async function showReposInfo(userName) {
     const projects = await res.json();
     
     console.log(projects);
+
+    reposInfoDiv.append(card);
+
+    // card.setAttribute('class','card');
+    card.classList.add('card');
     for (let i = 0; i < projects.length; i++) {
-        reposInfoDiv.innerHTML += `<div class="card">
+        card.innerHTML += `
                 <div class="card-body">
                     <div class="card-title">${projects[i].name}</div>
                     <div class="card-subHeading">${projects[i].language}</div>
@@ -61,14 +67,14 @@ async function showReposInfo(userName) {
                         </button>
                     </div>
                 </div>
-            </div>`
+            `
     }
 }
 
 
 theme.addEventListener('click',()=>{
     userInfo.classList.toggle('hide');
-    // reposInfoDiv.classList.toggle('show');
+    card.classList.toggle('hide');
     // body.style.background='#fff';
     // card.style.background='#fff';
 })
