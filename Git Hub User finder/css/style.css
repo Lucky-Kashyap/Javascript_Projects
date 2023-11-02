@@ -4,16 +4,25 @@
     box-sizing: border-box;
 }
 html,body{
+    --background-color:white;
+    --text-color: black;
+    --elements-color: white;
     width: 100vw;
-    background: #0e0e0e;
-    color: rgb(212 212 212);
+    background: var(--background-color);
+    color: var(--text-color);
 }
-.hide{
+
+body .hide{
+    background-color: hsl(207, 26%, 17%); 
+    color: white;
+    background-color: hsl(209, 23%, 22%);
+}
+/* .hide{
     background: #fff;
 }
 .show{
     background: #fff;
-}
+} */
 
 .container {
     width: 100vw;
@@ -52,7 +61,7 @@ a {
 
 .card {
     width: 18rem;
-    background: #202124;
+    background:var(--elements-color);
     box-shadow: 1px 2px 3px #454545;
     padding: 12px;
     margin: 20px;
@@ -73,7 +82,7 @@ img {
 
 .card-subHeading {
     font-size: 14px;
-    color: rgb(87, 87, 87);
+    color:var(--text-color);
 }
 
 .reposInfo {

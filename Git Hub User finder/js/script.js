@@ -67,8 +67,8 @@ async function showReposInfo(userName) {
 
 
 theme.addEventListener('click',()=>{
-    userInfo.classList.toggle('show');
-    reposInfoDiv.classList.toggle('show');
+    userInfo.classList.toggle('hide');
+    // reposInfoDiv.classList.toggle('show');
     // body.style.background='#fff';
     // card.style.background='#fff';
 })
