@@ -1,6 +1,10 @@
 let user = document.querySelector('input');
 let findUSer = document.querySelector('.btn');
 let userInfo = document.querySelector('.user-info');
+let reposInfoDiv = document.querySelector('.reposInfo')
+let theme = document.querySelector('.dark');
+let body = document.querySelector('body');
+// let card = document.querySelector('.');
 
 
 
@@ -12,6 +16,8 @@ findUSer.addEventListener('click',async()=>{
 
     console.log(res);
     showInfo(res);
+
+    showReposInfo(userName);
 })
 
 
@@ -29,7 +35,7 @@ function showInfo(data) {
                 <p>${data.followers} followers ${data.following} following
 
                 <button>
-                        <a href=${data.html_url}>
+                        <a href=${data.html_url} target='_blank'>
                             Do checkout Profile
                         </a>
                 </button>
@@ -37,3 +43,33 @@ function showInfo(data) {
         </div>
     </div>`
 }
+
+async function showReposInfo(userName) {
+    const res = await fetch(`https://api.github.com/users/${userName}/repos`)
+    const projects = await res.json();
+    
+    console.log(projects);
+    for (let i = 0; i < projects.length; i++) {
+        reposInfoDiv.innerHTML += `<div class="card">
+                <div class="card-body">
+                    <div class="card-title">${projects[i].name}</div>
+                    <div class="card-subHeading">${projects[i].language}</div>
+                    <div class="card-text">
+                        <button>
+                            <a href=${projects[i].html_url} target='_blank'>
+                                Do checkout Project
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>`
+    }
+}
+
+
+theme.addEventListener('click',()=>{
+    userInfo.classList.toggle('show');
+    reposInfoDiv.classList.toggle('show');
+    // body.style.background='#fff';
+    // card.style.background='#fff';
+})
