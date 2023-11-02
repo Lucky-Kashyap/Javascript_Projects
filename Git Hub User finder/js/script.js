@@ -1,6 +1,6 @@
 let user = document.querySelector('input');
 let findUSer = document.querySelector('.btn');
-let userInfo = document.querySelector('.user-info');
+let userInfo = document.querySelector('.user-info .card');
 let reposInfoDiv = document.querySelector('.reposInfo')
 let theme = document.querySelector('.dark');
 let body = document.querySelector('body');
@@ -23,7 +23,7 @@ findUSer.addEventListener('click',async()=>{
 
 function showInfo(data) {
     // console.log(data);
-    userInfo.innerHTML = `<div class="card">
+    userInfo.innerHTML = `
         <div class="card-img">
             <img src=${data.avatar_url} alt=${data.name}>
         </div>
@@ -40,8 +40,7 @@ function showInfo(data) {
                         </a>
                 </button>
             </div>
-        </div>
-    </div>`
+        </div>`
 }
 
 async function showReposInfo(userName) {
