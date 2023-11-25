@@ -57,3 +57,6 @@ body {
   background-color: #dadada;
   color: #000;
 }
+.card .hide {
+  display: none;
+}
