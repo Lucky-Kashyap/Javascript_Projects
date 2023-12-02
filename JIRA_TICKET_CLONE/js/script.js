@@ -43,6 +43,8 @@ allPriorityColors.forEach((color, i) => {
       color.classList.remove("border");
     });
     color.classList.add("border");
+
+    modalPriorityColor = color.classList[0];
   });
 });
 
@@ -50,21 +52,22 @@ modal.addEventListener("keydown", (e) => {
   let key = e.key;
 
   if (key === "Shift") {
-    createTicket();
+    createTicket(modalPriorityColor, textareaContainer.value);
     modal.style.display = "none";
     addFlag = false;
     textareaContainer.value = "";
   }
 });
 
-function createTicket() {
+function createTicket(ticketColor, ticketTask, ticketID) {
+  let id = ticketID || shortid();
   let ticketContainer = document.createElement("div");
   ticketContainer.setAttribute("class", "ticket-container");
 
   ticketContainer.innerHTML = `
-  <div class="ticket-color"></div>
-          <div class="ticket-id">#jjbhj</div>
-          <div class="ticket-area">Task 1</div>`;
+  <div class="ticket-color">${ticketColor}</div>
+          <div class="ticket-id">${id}</div>
+          <div class="ticket-area">${ticketTask}</div>`;
 
   displayTicket.appendChild(ticketContainer);
 }
