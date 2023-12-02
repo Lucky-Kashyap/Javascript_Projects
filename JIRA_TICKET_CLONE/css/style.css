@@ -135,6 +135,7 @@ body {
 .display-ticket .ticket-container .ticket-area {
   font-size: 30px;
   padding: 1vw 0;
+  outline: none;
 }
 /* Modal Container */
 
