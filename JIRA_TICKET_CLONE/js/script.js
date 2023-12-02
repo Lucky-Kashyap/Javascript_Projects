@@ -109,13 +109,17 @@ function handleLock(ticket) {
 
   let lock = lockElement.children[0];
 
+  let ticketArea = ticket.querySelector(".ticket-area");
+
   lock.addEventListener("click", (e) => {
     if (lock.classList.contains(lockClass)) {
       lock.classList.remove(lockClass);
       lock.classList.add(unlockClass);
+      ticketArea.setAttribute("contenteditable", "true");
     } else {
       lock.classList.remove(unlockClass);
       lock.classList.add(lockClass);
+      ticketArea.setAttribute("contenteditable", "false");
     }
   });
 }
