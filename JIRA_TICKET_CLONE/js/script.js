@@ -60,13 +60,14 @@ modal.addEventListener("keydown", (e) => {
 });
 
 function createTicket(ticketColor, ticketTask, ticketID) {
+  console.log(ticketColor);
   let id = ticketID || shortid();
   let ticketContainer = document.createElement("div");
   ticketContainer.setAttribute("class", "ticket-container");
 
   ticketContainer.innerHTML = `
-  <div class="ticket-color">${ticketColor}</div>
-          <div class="ticket-id">${id}</div>
+  <div class="ticket-color ${ticketColor}"></div>
+          <div class="ticket-id">#${id}</div>
           <div class="ticket-area">${ticketTask}</div>`;
 
   displayTicket.appendChild(ticketContainer);
