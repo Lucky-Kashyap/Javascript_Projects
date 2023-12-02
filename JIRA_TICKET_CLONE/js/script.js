@@ -86,7 +86,7 @@ for (let i = 0; i < ticketColor.length; i++) {
     // display new filtered tickets
 
     filteredTickets.forEach((ticket) => {
-      createTicket(ticket.ticketColor);
+      createTicket(ticket.ticketColor.ticket.ticketTask.ticket.ticketID);
     });
   });
 }
