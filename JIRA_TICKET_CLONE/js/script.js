@@ -89,6 +89,20 @@ for (let i = 0; i < ticketColor.length; i++) {
       createTicket(ticket.ticketColor.ticket.ticketTask.ticket.ticketID);
     });
   });
+
+  ticketColor[i].addEventListener("dblclick", () => {
+    // remove previous ticktes
+
+    let allTickets = document.querySelectorAll(".ticket-container");
+
+    for (let i = 0; i < allTickets.length; i++) {
+      allTickets[i].remove();
+    }
+
+    ticketArr.forEach((ticket) => {
+      createTicket(ticket.ticketColor, ticket.ticketTask, ticket.ticketID);
+    });
+  });
 }
 
 modal.addEventListener("keydown", (e) => {
@@ -96,9 +110,10 @@ modal.addEventListener("keydown", (e) => {
 
   if (key === "Shift") {
     createTicket(modalPriorityColor, textareaContainer.value);
-    modal.style.display = "none";
+    // modal.style.display = "none";
     addFlag = false;
-    textareaContainer.value = "";
+    // textareaContainer.value = "";
+    setModalToDefault();
   }
 });
 
@@ -120,7 +135,11 @@ function createTicket(ticketColor, ticketTask, ticketID) {
 
   // create object of ticket & add to array
 
-  ticketArr.push({ ticketColor, ticketTask, ticketID });
+  if (!ticketID) {
+    ticketArr.push({ ticketColor, ticketTask, ticketID: id });
+  }
+
+  // console.log(ticketArr);
 
   handleRemoveTicket(ticketContainer);
 
@@ -182,4 +201,16 @@ function handleColor(ticket) {
 
     ticketColor.classList.add(newTicketColor);
   });
+}
+
+function setModalToDefault() {
+  modal.style.display = "none";
+  textareaContainer.value = "";
+  modalPriorityColor = colors[colors.length - 1];
+
+  allPriorityColors.forEach((priorityColor) => {
+    priorityColor.classList.remove("border");
+  });
+
+  allPriorityColors[allPriorityColors.length - 1].classList.add("border");
 }
