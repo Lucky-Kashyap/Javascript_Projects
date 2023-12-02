@@ -42,6 +42,57 @@ if (localStorage.getItem("Tickets")) {
   });
 }
 
+for (let i = 0; i < ticketColor.length; i++) {
+  ticketColor[i].addEventListener("click", () => {
+    let currColor = ticketColor[i].classList[0];
+
+    let filteredTickets = ticketArr.filter((ticket) => {
+      return currColor === ticket.ticketColor;
+    });
+
+    // remove previous tickets
+
+    let allTickets = document.querySelectorAll(".ticket-container");
+
+    for (let i = 0; i < allTickets.length; i++) {
+      allTickets[i].remove();
+    }
+
+    // display new filtered tickets
+
+    filteredTickets.forEach((ticket) => {
+      createTicket(ticket.ticketColor, ticket.ticketTask, ticket.ticketID);
+    });
+  });
+
+  ticketColor[i].addEventListener("dblclick", () => {
+    // remove previous ticktes
+
+    let allTickets = document.querySelectorAll(".ticket-container");
+
+    for (let i = 0; i < allTickets.length; i++) {
+      allTickets[i].remove();
+    }
+
+    ticketArr.forEach((ticket) => {
+      createTicket(ticket.ticketColor, ticket.ticketTask, ticket.ticketID);
+    });
+  });
+}
+
+// listener for modal priority color
+
+allPriorityColors.forEach((color, i) => {
+  color.addEventListener("click", (e) => {
+    allPriorityColors.forEach((color, i) => {
+      color.classList.remove("border");
+    });
+    color.classList.add("border");
+
+    modalPriorityColor = color.classList[0];
+  });
+});
+
 generateTicket.addEventListener("click", () => {
   // Display Modal
   // Generate Ticket
@@ -63,57 +114,6 @@ generateTicket.addEventListener("click", () => {
 removeTicket.addEventListener("click", (e) => {
   removeFlag = !removeFlag;
 });
-
-// listener for modal priority color
-
-allPriorityColors.forEach((color, i) => {
-  color.addEventListener("click", (e) => {
-    allPriorityColors.forEach((color, i) => {
-      color.classList.remove("border");
-    });
-    color.classList.add("border");
-
-    modalPriorityColor = color.classList[0];
-  });
-});
-
-for (let i = 0; i < ticketColor.length; i++) {
-  ticketColor[i].addEventListener("click", () => {
-    let currColor = ticketColor[i].classList[0];
-
-    let filteredTickets = ticketArr.filter((ticket) => {
-      return currColor === ticket.ticketColor;
-    });
-
-    // remove previous tickets
-
-    let allTickets = document.querySelectorAll(".ticket-container");
-
-    for (let i = 0; i < allTickets.length; i++) {
-      allTickets[i].remove();
-    }
-
-    // display new filtered tickets
-
-    filteredTickets.forEach((ticket) => {
-      createTicket(ticket.ticketColor.ticket.ticketTask.ticket.ticketID);
-    });
-  });
-
-  ticketColor[i].addEventListener("dblclick", () => {
-    // remove previous ticktes
-
-    let allTickets = document.querySelectorAll(".ticket-container");
-
-    for (let i = 0; i < allTickets.length; i++) {
-      allTickets[i].remove();
-    }
-
-    ticketArr.forEach((ticket) => {
-      createTicket(ticket.ticketColor, ticket.ticketTask, ticket.ticketID);
-    });
-  });
-}
 
 modal.addEventListener("keydown", (e) => {
   let key = e.key;
@@ -187,7 +187,7 @@ function handleRemoveTicket(ticket, id) {
 // handle lock
 
 function handleLock(ticket, id) {
-  console.log(ticket);
+  // console.log(ticket);
   let lockElement = ticket.querySelector(".ticket-lock");
 
   let lock = lockElement.children[0];
@@ -231,6 +231,8 @@ function handleColor(ticket, id) {
     let currTicketColorIndex = colors.findIndex((color) => {
       return currTicketColor === color;
     });
+
+    // console.log(currTicketColor,currTicketColorIndex);
 
     currTicketColorIndex++;
 

@@ -17,7 +17,7 @@ body {
 }
 .container {
   width: 100%;
-  height: 17%;
+  height: 18vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +25,7 @@ body {
   padding: 2vw;
 }
 .container .toolbox-container {
-  width: 30%;
+  width: 40%;
   height: 100%;
   display: flex;
   justify-content: space-around;
@@ -38,7 +38,7 @@ body {
 }
 .container .btn-container {
   width: 10%;
-  height: 100%;
+  height: 10vh;
   background-color: #d3d3d3;
   display: flex;
   justify-content: space-around;
@@ -58,7 +58,7 @@ body {
   border-radius: 5vw;
 }
 .container .toolbox-container .color {
-  width: 15%;
+  width: 18%;
   height: 100%;
   background-color: lightsalmon;
   border-radius: 2px;
