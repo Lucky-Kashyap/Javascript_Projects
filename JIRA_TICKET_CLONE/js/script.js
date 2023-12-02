@@ -2,10 +2,12 @@
 
 // select modal
 
-var modal = document.querySelector(".wrapper-modal");
-var generateTicket = document.querySelector(
+let modal = document.querySelector(".wrapper-modal");
+let generateTicket = document.querySelector(
   ".container .btn-container .add-btn i"
 );
+
+let displayTicket = document.querySelector(".display-ticket");
 
 let addFlag = false;
 
@@ -26,3 +28,25 @@ generateTicket.addEventListener("click", () => {
     addFlag = false;
   }
 });
+
+modal.addEventListener("keydown", (e) => {
+  let key = e.key;
+
+  if (key === "Shift") {
+    createTicket();
+    modal.style.display = "none";
+    addFlag = false;
+  }
+});
+
+function createTicket() {
+  let ticketContainer = document.createElement("div");
+  ticketContainer.setAttribute("class", "ticket-container");
+
+  ticketContainer.innerHTML = `
+  <div class="ticket-color"></div>
+          <div class="ticket-id">#jjbhj</div>
+          <div class="ticket-area">Task 1</div>`;
+
+  displayTicket.appendChild(ticketContainer);
+}
