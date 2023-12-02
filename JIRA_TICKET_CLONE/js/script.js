@@ -4,13 +4,22 @@
 
 let modal = document.querySelector(".wrapper-modal");
 let generateTicket = document.querySelector(
-  ".container .btn-container .add-btn i"
+  ".container .btn-container .add-btn"
+);
+
+let removeTicket = document.querySelector(
+  ".container .btn-container .remove-btn"
 );
 let textareaContainer = document.querySelector(".textarea-container");
 
 let displayTicket = document.querySelector(".display-ticket");
 
 let addFlag = false;
+let removeFlag = false;
+
+let lockClass = "ri-lock-line";
+
+let unlockClass = "ri-lock-unlock-fill";
 
 let allPriorityColors = document.querySelectorAll(".priority-color");
 
@@ -33,6 +42,10 @@ generateTicket.addEventListener("click", () => {
     modal.style.display = "none";
     addFlag = false;
   }
+});
+
+removeTicket.addEventListener("click", (e) => {
+  removeFlag = !removeFlag;
 });
 
 // listener for modal priority color
@@ -60,7 +73,7 @@ modal.addEventListener("keydown", (e) => {
 });
 
 function createTicket(ticketColor, ticketTask, ticketID) {
-  console.log(ticketColor);
+  // console.log(ticketColor);
   let id = ticketID || shortid();
   let ticketContainer = document.createElement("div");
   ticketContainer.setAttribute("class", "ticket-container");
@@ -68,7 +81,41 @@ function createTicket(ticketColor, ticketTask, ticketID) {
   ticketContainer.innerHTML = `
   <div class="ticket-color ${ticketColor}"></div>
           <div class="ticket-id">#${id}</div>
-          <div class="ticket-area">${ticketTask}</div>`;
+          <div class="ticket-area">${ticketTask}</div>
+          
+          <div class='ticket-lock'><i class=${lockClass}></i></div>
+          `;
 
   displayTicket.appendChild(ticketContainer);
+
+  handleRemoveTicket(ticketContainer);
+
+  handleLock(ticketContainer);
+}
+
+function handleRemoveTicket(ticket) {
+  // remove flag -> true -> remove
+
+  if (removeFlag) {
+    ticket.remove();
+  }
+}
+
+// handle lock
+
+function handleLock(ticket) {
+  console.log(ticket);
+  let lockElement = ticket.querySelector(".ticket-lock");
+
+  let lock = lockElement.children[0];
+
+  lock.addEventListener("click", (e) => {
+    if (lock.classList.contains(lockClass)) {
+      lock.classList.remove(lockClass);
+      lock.classList.add(unlockClass);
+    } else {
+      lock.classList.remove(unlockClass);
+      lock.classList.add(lockClass);
+    }
+  });
 }
