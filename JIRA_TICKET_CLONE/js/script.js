@@ -12,6 +12,11 @@ let displayTicket = document.querySelector(".display-ticket");
 
 let addFlag = false;
 
+let allPriorityColors = document.querySelectorAll(".priority-color");
+
+let colors = ["red", "yellow", "green", "grey"];
+let modalPriorityColor = colors[colors.length - 1];
+
 generateTicket.addEventListener("click", () => {
   // Display Modal
   // Generate Ticket
@@ -28,6 +33,17 @@ generateTicket.addEventListener("click", () => {
     modal.style.display = "none";
     addFlag = false;
   }
+});
+
+// listener for modal priority color
+
+allPriorityColors.forEach((color, i) => {
+  color.addEventListener("click", (e) => {
+    allPriorityColors.forEach((color, i) => {
+      color.classList.remove("border");
+    });
+    color.classList.add("border");
+  });
 });
 
 modal.addEventListener("keydown", (e) => {
