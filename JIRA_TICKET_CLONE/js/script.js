@@ -14,8 +14,14 @@ let textareaContainer = document.querySelector(".textarea-container");
 
 let displayTicket = document.querySelector(".display-ticket");
 
+let ticketColor = document.querySelectorAll(".color");
+
 let addFlag = false;
 let removeFlag = false;
+
+// ticket array
+
+let ticketArr = [];
 
 let lockClass = "ri-lock-line";
 
@@ -61,6 +67,30 @@ allPriorityColors.forEach((color, i) => {
   });
 });
 
+for (let i = 0; i < ticketColor.length; i++) {
+  ticketColor[i].addEventListener("click", () => {
+    let currColor = ticketColor[i].classList[0];
+
+    let filteredTickets = ticketArr.filter((ticket) => {
+      return currColor === ticket.ticketColor;
+    });
+
+    // remove previous tickets
+
+    let allTickets = document.querySelectorAll(".ticket-container");
+
+    for (let i = 0; i < allTickets.length; i++) {
+      allTickets[i].remove();
+    }
+
+    // display new filtered tickets
+
+    filteredTickets.forEach((ticket) => {
+      createTicket(ticket.ticketColor);
+    });
+  });
+}
+
 modal.addEventListener("keydown", (e) => {
   let key = e.key;
 
@@ -87,6 +117,10 @@ function createTicket(ticketColor, ticketTask, ticketID) {
           `;
 
   displayTicket.appendChild(ticketContainer);
+
+  // create object of ticket & add to array
+
+  ticketArr.push({ ticketColor, ticketTask, ticketID });
 
   handleRemoveTicket(ticketContainer);
 
