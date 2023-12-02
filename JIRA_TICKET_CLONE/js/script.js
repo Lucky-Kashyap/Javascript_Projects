@@ -32,6 +32,16 @@ let allPriorityColors = document.querySelectorAll(".priority-color");
 let colors = ["red", "yellow", "green", "grey"];
 let modalPriorityColor = colors[colors.length - 1];
 
+// store tickets to localstorage
+
+if (localStorage.getItem("Tickets")) {
+  ticketArr = JSON.parse(localStorage.getItem("Tickets"));
+
+  ticketArr.forEach((ticket) => {
+    createTicket(ticket.ticketColor, ticket.ticketTask, ticket.ticketID);
+  });
+}
+
 generateTicket.addEventListener("click", () => {
   // Display Modal
   // Generate Ticket
@@ -137,27 +147,46 @@ function createTicket(ticketColor, ticketTask, ticketID) {
 
   if (!ticketID) {
     ticketArr.push({ ticketColor, ticketTask, ticketID: id });
+
+    localStorage.setItem("Tickets", JSON.stringify(ticketArr));
   }
 
   // console.log(ticketArr);
 
-  handleRemoveTicket(ticketContainer);
+  handleRemoveTicket(ticketContainer, id);
 
-  handleLock(ticketContainer);
-  handleColor(ticketContainer);
+  handleLock(ticketContainer, id);
+  handleColor(ticketContainer, id);
 }
 
-function handleRemoveTicket(ticket) {
+function handleRemoveTicket(ticket, id) {
   // remove flag -> true -> remove
 
-  if (removeFlag) {
+  // if (removeFlag) {
+  //   ticket.remove();
+  // }
+
+  ticket.addEventListener("click", () => {
+    if (!removeFlag) {
+      return;
+    }
+
+    let index = getTicketIndex(id);
+
+    // remove from localstorage
+    ticketArr.splice(index, 1);
+
+    let removeTickets = JSON.stringify(ticketArr);
+
+    localStorage.setItem("Tickets", removeTickets);
+
     ticket.remove();
-  }
+  });
 }
 
 // handle lock
 
-function handleLock(ticket) {
+function handleLock(ticket, id) {
   console.log(ticket);
   let lockElement = ticket.querySelector(".ticket-lock");
 
@@ -166,6 +195,8 @@ function handleLock(ticket) {
   let ticketArea = ticket.querySelector(".ticket-area");
 
   lock.addEventListener("click", (e) => {
+    let ticketIndex = getTicketIndex(id);
+
     if (lock.classList.contains(lockClass)) {
       lock.classList.remove(lockClass);
       lock.classList.add(unlockClass);
@@ -175,15 +206,24 @@ function handleLock(ticket) {
       lock.classList.add(lockClass);
       ticketArea.setAttribute("contenteditable", "false");
     }
+
+    // modify data in localstorage
+
+    ticketArr[ticketIndex].ticketTask = ticketArea.innerText;
+
+    localStorage.setItem("Tickets", JSON.stringify(ticketArr));
   });
 }
 
 // handle color
 
-function handleColor(ticket) {
+function handleColor(ticket, id) {
   let ticketColor = ticket.querySelector(".ticket-color");
 
   ticketColor.addEventListener("click", () => {
+    // get index
+    let ticketIndex = getTicketIndex(id);
+
     let currTicketColor = ticketColor.classList[1];
 
     // get ticket color  index
@@ -200,6 +240,12 @@ function handleColor(ticket) {
     ticketColor.classList.remove(currTicketColor);
 
     ticketColor.classList.add(newTicketColor);
+
+    // modify data in localstorage
+
+    ticketArr[ticketIndex].ticketColor = newTicketColor;
+
+    localStorage.setItem("Tickets", JSON.stringify(ticketArr));
   });
 }
 
@@ -213,4 +259,11 @@ function setModalToDefault() {
   });
 
   allPriorityColors[allPriorityColors.length - 1].classList.add("border");
+}
+
+function getTicketIndex(id) {
+  let ticketIdx = ticketArr.findIndex((ticket) => {
+    return ticket.ticketID === id;
+  });
+  return ticketIdx;
 }
