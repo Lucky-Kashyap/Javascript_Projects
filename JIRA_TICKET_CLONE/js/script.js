@@ -6,6 +6,7 @@ let modal = document.querySelector(".wrapper-modal");
 let generateTicket = document.querySelector(
   ".container .btn-container .add-btn i"
 );
+let textareaContainer = document.querySelector(".textarea-container");
 
 let displayTicket = document.querySelector(".display-ticket");
 
@@ -36,6 +37,7 @@ modal.addEventListener("keydown", (e) => {
     createTicket();
     modal.style.display = "none";
     addFlag = false;
+    textareaContainer.value = "";
   }
 });
 
