@@ -2,9 +2,75 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: gilroy;
 }
 html,
 body {
   width: 100%;
   height: 100%;
+}
+.container {
+  width: 100%;
+  height: 16%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(40, 46, 48);
+  padding: 2vw;
+}
+.container .toolbox-container {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: antiquewhite;
+  padding: 1vw;
+  border-radius: 0.5vw;
+
+  /* background-color: darkslategray; */
+}
+.container .btn-container {
+  width: 10%;
+  height: 100%;
+  background-color: #d3d3d3;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* gap: 1vw; */
+  border-radius: 5vw;
+}
+
+.container .btn-container i {
+  object-fit: cover;
+  font-size: 3vw;
+  font-weight: 500;
+  color: rgb(50, 57, 59);
+}
+.container .btn-container i:hover {
+  background-color: #485460;
+  border-radius: 5vw;
+}
+.container .toolbox-container .color {
+  width: 15%;
+  height: 100%;
+  background-color: lightsalmon;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.container .toolbox-container .red {
+  background-color: red;
+  margin-right: 10px;
+}
+.container .toolbox-container .yellow {
+  background-color: yellow;
+  margin-right: 10px;
+}
+.container .toolbox-container .green {
+  background-color: green;
+  margin-right: 10px;
+}
+.container .toolbox-container .grey {
+  background-color: grey;
+  margin-right: 10px;
 }
