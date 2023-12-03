@@ -68,10 +68,15 @@ Features:
 - Use Web Storage API to store tickets (localStorage)
 - We can also lock & unlock tickets & edit it if needed.
 
+Project ShowCase :
+
+![ezgif com-video-to-gif (7)](https://github.com/Lucky-Kashyap/Javascript_Projects/assets/88204554/8e562e9e-04a9-4d74-98b8-b5d35b13c681)
+
+
 # Upcoming Projects
 
 - Excel Sheet Clone
-- Open Board
+- Open Board (Drawing Board)
 - Camera Gallery
 
 ### VANILLA JS PROJECTS
