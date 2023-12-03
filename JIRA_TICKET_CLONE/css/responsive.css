@@ -47,6 +47,9 @@
     height: 7vh;
     /* padding: 1vw; */
   }
+  .wrapper-modal .modal-container .color-container p {
+    font-size: 13px;
+  }
   .display-ticket {
     justify-content: center;
     align-items: center;
@@ -65,6 +68,7 @@
   .modal-container .color-container {
     width: 80%;
     height: 50%;
+
     gap: 1vw;
     flex-direction: row;
   }
@@ -73,8 +77,8 @@
     padding: 1rem;
   }
   .modal-container .color-container .priority-color {
-    width: 25%;
-    height: 17%;
+    width: 30%;
+    height: 12%;
   }
   .display-ticket .ticket-container {
     width: 80%;

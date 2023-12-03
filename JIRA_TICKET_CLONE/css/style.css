@@ -168,7 +168,11 @@ body {
   border-radius: 1.4vw;
   /* background-color: #4487ca; */
 }
-
+.wrapper-modal .modal-container .color-container p {
+  font-size: 1.2vw;
+  font-weight: 300;
+  padding: 1vw;
+}
 .modal-container textarea {
   height: 100%;
   width: 80%;

@@ -118,6 +118,8 @@ removeTicket.addEventListener("click", (e) => {
 modal.addEventListener("keydown", (e) => {
   let key = e.key;
 
+  console.log(key);
+
   if (key === "Shift") {
     createTicket(modalPriorityColor, textareaContainer.value);
     // modal.style.display = "none";
