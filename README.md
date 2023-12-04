@@ -74,6 +74,16 @@ Project ShowCase :
 
 ![ezgif com-video-to-gif (7)](https://github.com/Lucky-Kashyap/Javascript_Projects/assets/88204554/8e562e9e-04a9-4d74-98b8-b5d35b13c681)
 
+Project 8 : Expense Tracker Assignment
+
+Features:
+
+- add transactions
+- store all expenses in localStorage
+- delete expense by clicking on delete button
+- history will be maintain
+- Your Expenses has been calculated
+
 # Upcoming Projects
 
 - Excel Sheet Clone
