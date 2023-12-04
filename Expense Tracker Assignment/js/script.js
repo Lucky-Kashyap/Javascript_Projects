@@ -86,6 +86,8 @@ submit.addEventListener("click", (e) => {
   });
 
   saveExpensesToLocalStorage();
+  updateTotalExpenses();
+  clearForm();
 
   // transactions.innerHTML += `
   // <li class="items">
@@ -132,20 +134,9 @@ submit.addEventListener("click", (e) => {
   // });
 
   // requiredBalance.innerHTML = `₹ ${balance}`;
-
-  updateTotalExpenses();
-  amountValue.value = "";
-  description.value = "";
 });
 
-// function deleteExpenses() {
-// deleteExp = document.querySelector(".delete");
-
-// deleteExp.addEventListener("click", (e) => {
-//   // transactions.innerHTML = "";
-
-//   items = document.querySelector(".items");
-
-//   transactions.removeChild(items);
-// });
-// }
+function clearForm() {
+  description.value = "";
+  amountValue.value = "";
+}

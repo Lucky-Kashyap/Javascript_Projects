@@ -8,11 +8,20 @@ Project ShowCase :
 
 ![ezgif com-video-to-gif (6)](https://github.com/Lucky-Kashyap/Javascript_Projects/assets/88204554/2854c664-ab22-40e5-a12a-9ba762fb3dc0)
 
+### Completed Web Minor Project
+
 Project 2: product filter page
+
+Features:
+
+- use MOCK product API for getting data
+- filter by category you select
 
 Project ShowCase :
 
 ![ezgif com-video-to-gif (3)](https://github.com/Lucky-Kashyap/Javascript_Projects/assets/88204554/e38f8755-90c7-4ccd-a11a-b3598639217d)
+
+### Completed task Product filter page
 
 Project 3: News API based project
 
@@ -20,9 +29,16 @@ Project 4: Quiz APP
 
 Project 5: Github User Finder Using JS
 
+Features:
+
+- search any github user
+- also show its repositories
+
 Project ShowCase :
 
 ![ezgif com-video-to-gif (2)](https://github.com/Lucky-Kashyap/Javascript_Projects/assets/88204554/4426ace7-dff8-457a-afb0-a897568b0aa0)
+
+### Completed Assignment GitHub User Finder Using Vanilla Js
 
 Project 6: Bubble Game
 
@@ -74,6 +90,8 @@ Project ShowCase :
 
 ![ezgif com-video-to-gif (7)](https://github.com/Lucky-Kashyap/Javascript_Projects/assets/88204554/8e562e9e-04a9-4d74-98b8-b5d35b13c681)
 
+### Completed JIRA TICKET MANAGEMENT CLONE Using Vanilla JS
+
 Project 8 : Expense Tracker Assignment
 
 Features:
@@ -83,6 +101,42 @@ Features:
 - delete expense by clicking on delete button
 - history will be maintain
 - Your Expenses has been calculated
+
+Approach:
+
+- blank array
+
+- object= key,value {name:'Book',price:250}
+
+- SHow transactions
+
+  array read loop through array
+
+  DOM write (ul li)
+
+- add all transactions and show total
+
+      - where are the values= array - object - price
+
+  loop array obj price aur usme jo values hai usko add krta jaunga
+
+- Remove transactions when clicking the delete button
+
+  - delete button par event listener add krna pdega
+    kis delete button par click ho rha hai yeh pta krna pdega
+    fir us item ko hamare array me dhund kar delete krna pdega
+
+- update the total after deleting an item
+
+  - array ke andar - object price ka total kar rhe hai
+    jaise hi hum delete krte hai item ko toh hume array ki values ko fir se DOM me dalna pdega
+
+- Everything should be stored in localStorage
+
+  - array ko localtorage mein save krna hai
+    array ko localstorage mein se read krna hai
+
+### Completed Expense Tracker Assignment Using Vanilla JS.
 
 # Upcoming Projects
 
