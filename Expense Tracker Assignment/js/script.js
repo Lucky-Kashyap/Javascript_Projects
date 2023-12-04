@@ -77,17 +77,18 @@ submit.addEventListener("click", (e) => {
     price: +amountValue.value,
   });
 
-  transactions.innerHTML = transactionsArray.map((ele, index) => {
-    return `<li class="items">
-          <span class="left">${ele.name}</span>
-          <span class="right">${ele.price}</span>
-          <span class="delete fa-solid fa-xmark" onclick="deleteExpense(${index})"></span>
-        </li>`;
-  });
-
+  updateExpenseList();
   saveExpensesToLocalStorage();
   updateTotalExpenses();
   clearForm();
+
+  // transactions.innerHTML = transactionsArray.map((ele, index) => {
+  //   return `<li class="items">
+  //         <span class="left">${ele.name}</span>
+  //         <span class="right">${ele.price}</span>
+  //         <span class="delete fa-solid fa-xmark" onclick="deleteExpense(${index})"></span>
+  //       </li>`;
+  // });
 
   // transactions.innerHTML += `
   // <li class="items">
