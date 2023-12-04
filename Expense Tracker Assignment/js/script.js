@@ -19,6 +19,49 @@ let deleteExp;
 
 // localStorage.getItem("expenses", transactionsArray);
 
+// Load expenses from localStorage on page load
+window.addEventListener("load", () => {
+  const storedExpenses = localStorage.getItem("expenses");
+  if (storedExpenses) {
+    transactionsArray = JSON.parse(storedExpenses);
+    updateExpenseList();
+    updateTotalExpenses();
+  }
+});
+
+function updateTotalExpenses() {
+  balance = transactionsArray.reduce((acc, curr) => acc + curr.price, 0);
+
+  requiredBalance.innerHTML = `₹ ${balance}`;
+}
+
+function updateExpenseList() {
+  transactions.innerHTML = "";
+  transactionsArray.forEach((expense, index) => {
+    const li = document.createElement("li");
+    li.className = "items";
+    li.innerHTML = `
+          <span class='left'>${expense.name}</span>
+          <span class='right'>${expense.price}</span>
+          <span class="delete fa-solid fa-xmark" onclick="deleteExpense(${index})"></span>
+      `;
+    transactions.appendChild(li);
+  });
+}
+
+// remove items
+
+function deleteExpense(index) {
+  transactionsArray.splice(index, 1);
+  updateExpenseList();
+  updateTotalExpenses();
+  saveExpensesToLocalStorage();
+}
+
+function saveExpensesToLocalStorage() {
+  localStorage.setItem("expenses", JSON.stringify(transactionsArray));
+}
+
 submit.addEventListener("click", (e) => {
   // e.preventDefault();
 
@@ -29,15 +72,20 @@ submit.addEventListener("click", (e) => {
   // amountValue.innerText = amountValue.value;
   // description.innerText = description.value;
 
-  transactionsArray.push({ name: description.value, price: amountValue.value });
+  transactionsArray.push({
+    name: description.value,
+    price: +amountValue.value,
+  });
 
-  transactions.innerHTML = transactionsArray.map((ele) => {
+  transactions.innerHTML = transactionsArray.map((ele, index) => {
     return `<li class="items">
           <span class="left">${ele.name}</span>
           <span class="right">${ele.price}</span>
-          <span class="delete fa-solid fa-xmark"></span>
+          <span class="delete fa-solid fa-xmark" onclick="deleteExpense(${index})"></span>
         </li>`;
   });
+
+  saveExpensesToLocalStorage();
 
   // transactions.innerHTML += `
   // <li class="items">
@@ -46,11 +94,15 @@ submit.addEventListener("click", (e) => {
   //         <span class="delete fa-solid fa-xmark"></span>
   //       </li>`;
 
-  localStorage.setItem("expenses", JSON.stringify(transactionsArray));
+  // localStorage.setItem("expenses", JSON.stringify(transactionsArray));
 
-  localStorage.getItem("expenses", transactionsArray);
+  // function saveExpensesToLocalStorage() {
+  // localStorage.setItem("expenses", JSON.stringify(transactionsArray));
+  // }
 
-  console.log(transactionsArray);
+  // localStorage.getItem("expenses", transactionsArray);
+
+  // console.log(transactionsArray);
 
   // deleteExpenses(document.querySelector());
   // deleteExp = document.querySelector(".delete");
@@ -63,7 +115,7 @@ submit.addEventListener("click", (e) => {
   // transactions.removeChild(items);
   // });
 
-  balance += Number(amountValue.value);
+  // balance += Number(amountValue.value);
 
   // console.log(deleteExp);
 
@@ -79,8 +131,9 @@ submit.addEventListener("click", (e) => {
   //   transactions.removeChild(items);
   // });
 
-  requiredBalance.innerHTML = `₹ ${balance}`;
+  // requiredBalance.innerHTML = `₹ ${balance}`;
 
+  updateTotalExpenses();
   amountValue.value = "";
   description.value = "";
 });
