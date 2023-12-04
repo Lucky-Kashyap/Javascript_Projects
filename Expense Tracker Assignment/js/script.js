@@ -8,7 +8,11 @@ let amountValue = document.getElementById("amount-value");
 
 let description = document.getElementById("text-value");
 
+let requiredBalance = document.getElementById("balance");
+
 let submit = document.querySelector("#submit");
+
+let balance = 0;
 
 submit.addEventListener("click", (e) => {
   // e.preventDefault();
@@ -26,6 +30,12 @@ submit.addEventListener("click", (e) => {
           <span class="right">${amountValue.value}</span>
           <span class="delete fa-solid fa-xmark"></span>
         </li>`;
+
+  balance += Number(amountValue.value);
+
+  console.log(balance);
+
+  requiredBalance.innerHTML = `₹ ${balance}`;
 
   amountValue.value = "";
   description.value = "";
