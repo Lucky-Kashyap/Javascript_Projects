@@ -27,10 +27,10 @@ video {
 }
 .recording-cont {
   width: 5rem;
-  height: 15rem;
+  height: 12rem;
   /* background-color: lightblue; */
   position: absolute;
-  top: calc((100vh - 15rem) / 2);
+  top: calc((100vh - 12rem) / 2);
   right: 5rem;
   color: aliceblue;
   display: flex;
@@ -58,4 +58,36 @@ video {
   height: 3rem;
   background-color: aliceblue;
   border-radius: 50%;
+}
+
+/* Animate buttons */
+
+.scale-record {
+  animation-name: scale-record;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+.scale-capture {
+  animation-name: scale-capture;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes scale-record {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+@keyframes scale-capture {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }
