@@ -7,4 +7,6 @@ let constraints = {
   audio: true,
 };
 
-navigator.mediaDevices.getUserMedia(constraints).then((stream) => {});
+navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+  video.srcObject = stream;
+});
