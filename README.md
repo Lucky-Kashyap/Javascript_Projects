@@ -144,11 +144,12 @@ Visit Expense Tracker : [[https://transaction-track.netlify.app/]]
 
 ### Completed Expense Tracker Assignment Using Vanilla JS.
 
+Project 9 : Web Cam
+
 # Upcoming Projects
 
 - Excel Sheet Clone
 - Open Board (Drawing Board)
-- Camera Gallery
 
 ### VANILLA JS PROJECTS
 
