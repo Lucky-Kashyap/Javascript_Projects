@@ -7,6 +7,9 @@ let recordPhoto = document.querySelector(".capture-btn");
 let recordVideoBtn = document.querySelector(".record-video");
 let recordPhotoBtn = document.querySelector(".record-photo");
 
+let filterLayer = document.querySelector(".filter-layer");
+let allFilters = document.querySelectorAll(".filter");
+
 let timer = document.querySelector(".timer");
 
 var audio = document.getElementById("audioPlayer");
@@ -19,6 +22,7 @@ let recorder;
 let chunks = []; // media data
 
 let recordFlag = false;
+// let transparentColor = "transparent";
 
 let constraints = {
   video: true,
@@ -71,6 +75,8 @@ recordVideo.addEventListener("click", () => {
 
 recordPhoto.addEventListener("click", (e) => {
   recordPhotoBtn.classList.add("scale-capture");
+
+  // console.log("photo clicked");
 
   if (audio.paused) {
     audio.play();
@@ -135,3 +141,16 @@ function stopTimer() {
   timer.innerText = "00:00:00";
   timer.style.display = "none";
 }
+
+// filtering image
+
+let transparentColor = "transparent";
+
+allFilters.forEach((filterElem) => {
+  filterElem.addEventListener("click", (e) => {
+    // Get style
+    transparentColor =
+      getComputedStyle(filterElem).getPropertyValue("background-color");
+    filterLayer.style.backgroundColor = transparentColor;
+  });
+});
