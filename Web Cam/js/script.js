@@ -7,6 +7,14 @@ let recordPhoto = document.querySelector(".capture-btn");
 let recordVideoBtn = document.querySelector(".record-video");
 let recordPhotoBtn = document.querySelector(".record-photo");
 
+let timer = document.querySelector(".timer");
+
+var audio = document.getElementById("audioPlayer");
+
+let timerID;
+
+let counter = 0; // count seconds
+
 let recorder;
 let chunks = []; // media data
 
@@ -61,13 +69,39 @@ recordVideo.addEventListener("click", () => {
   }
 });
 
+recordPhoto.addEventListener("click", (e) => {
+  recordPhotoBtn.classList.add("scale-capture");
+
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+
+  let canvas = document.createElement("canvas");
+
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  let tool = canvas.getContext("2d");
+
+  tool.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  let imageURL = canvas.toDataURL();
+
+  let a = document.createElement("a");
+
+  a.href = imageURL;
+  a.download = "image.png";
+  a.click();
+
+  setTimeout(() => {
+    recordPhotoBtn.classList.remove("scale-capture");
+  }, 500);
+});
+
 // start timer
-
-let timer = document.querySelector(".timer");
-
-let timerID;
-
-let counter = 0; // count seconds
 
 function startTimer() {
   timer.style.display = "block";
