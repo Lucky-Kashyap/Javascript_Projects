@@ -56,6 +56,7 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
 });
 
 recordVideo.addEventListener("click", () => {
+  console.log("photo clicked");
   if (!recorder) return;
 
   recordFlag = !recordFlag;
@@ -76,7 +77,7 @@ recordVideo.addEventListener("click", () => {
 recordPhoto.addEventListener("click", (e) => {
   recordPhotoBtn.classList.add("scale-capture");
 
-  // console.log("photo clicked");
+  console.log("photo clicked");
 
   if (audio.paused) {
     audio.play();
@@ -99,7 +100,7 @@ recordPhoto.addEventListener("click", (e) => {
   let a = document.createElement("a");
 
   a.href = imageURL;
-  a.download = "image.png";
+  a.download = "image.jpg";
   a.click();
 
   setTimeout(() => {
