@@ -1,0 +1,35 @@
+@media (max-width: 500px) {
+  .recording-container {
+    width: 14rem;
+    justify-content: center;
+    flex-direction: row;
+    gap: 12vw;
+    top: 40rem;
+  }
+  .filter-container {
+    width: 18rem;
+    height: 5rem;
+    top: 10rem;
+    left: 3rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 3vw;
+    align-items: center;
+    background-color: aliceblue;
+  }
+  .filter-container .filter {
+    width: 20rem;
+    margin: 0;
+    /* height: 3rem; */
+    /* display: inline-block; */
+  }
+}
+@media (max-width: 400px) {
+  .recording-container {
+    width: 14rem;
+    justify-content: center;
+    flex-direction: row;
+    gap: 12vw;
+    top: 40rem;
+  }
+}

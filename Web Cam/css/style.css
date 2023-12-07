@@ -12,7 +12,7 @@ body {
 .main {
   width: 100vw;
   height: 100vh;
-  /* position: relative; */
+  position: relative;
   /* overflow: hidden; */
 }
 .video-container {
@@ -117,11 +117,11 @@ video {
   position: absolute;
   top: calc((100vh - 20rem) / 2);
   left: 5rem;
-  /* background-color: aqua; */
+  background-color: cornflowerblue;
   z-index: 2;
 }
 .filter {
-  height: 4rem;
+  height: 4.5rem;
   /* background-image: url("https://picsum.photos/seed/picsum/200/300"); */
   background-image: url("https://images.unsplash.com/3/jerry-adney.jpg?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-position: center;
