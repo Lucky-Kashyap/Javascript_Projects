@@ -7,14 +7,16 @@ let recordPhoto = document.querySelector(".capture-btn");
 let recordVideoBtn = document.querySelector(".record-video");
 let recordPhotoBtn = document.querySelector(".record-photo");
 
-let filterLayer = document.querySelector(".filter-layer");
-let allFilters = document.querySelectorAll(".filter");
+// let filterLayer = document.querySelector(".filter-layer");
+// let allFilters = document.querySelectorAll(".filter");
 
 let timer = document.querySelector(".timer");
 
 var audio = document.getElementById("audioPlayer");
 
 let timerID;
+
+let transparentColor = "transparent";
 
 let counter = 0; // count seconds
 
@@ -95,6 +97,12 @@ recordPhoto.addEventListener("click", (e) => {
 
   tool.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+  // filter layer
+
+  tool.fillStyle = transparentColor;
+
+  tool.fillRect(0, 0, canvas.width, canvas.height);
+
   let imageURL = canvas.toDataURL();
 
   let a = document.createElement("a");
@@ -145,7 +153,9 @@ function stopTimer() {
 
 // filtering image
 
-let transparentColor = "transparent";
+// Filtering logic
+let filterLayer = document.querySelector(".filter-layer");
+let allFilters = document.querySelectorAll(".filter");
 
 allFilters.forEach((filterElem) => {
   filterElem.addEventListener("click", (e) => {
