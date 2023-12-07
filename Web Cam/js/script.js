@@ -159,7 +159,7 @@ let allFilters = document.querySelectorAll(".filter");
 
 allFilters.forEach((filterElem) => {
   filterElem.addEventListener("click", (e) => {
-    // Get style
+    // get style
     transparentColor =
       getComputedStyle(filterElem).getPropertyValue("background-color");
     filterLayer.style.backgroundColor = transparentColor;
