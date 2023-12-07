@@ -61,7 +61,7 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
       let videoStore = databaseTransaction.objectStore("video");
 
       let videoEntry = {
-        id: `img-${imageID}`,
+        id: `vid-${videoID}`,
         blobData: blob,
       };
 

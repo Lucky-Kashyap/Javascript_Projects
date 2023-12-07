@@ -23,6 +23,14 @@
     /* height: 3rem; */
     /* display: inline-block; */
   }
+
+  .back {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    bottom: 0rem;
+    right: 0rem;
+  }
 }
 @media (max-width: 400px) {
   .recording-container {

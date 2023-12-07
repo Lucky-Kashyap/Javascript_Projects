@@ -3,7 +3,7 @@
 setTimeout(() => {
   if (db) {
     // videos retieval
-    let videoDBTransaction = database.transaction("video", "readonly");
+    let videoDBTransaction = db.transaction("video", "readonly");
     let videoStore = videoDBTransaction.objectStore("video");
     let videoRequest = videoStore.getAll(); //Event driven
     videoRequest.onsuccess = (e) => {
@@ -35,7 +35,7 @@ setTimeout(() => {
     };
 
     // images retrieval
-    let imageDBTransaction = database.transaction("image", "readonly");
+    let imageDBTransaction = db.transaction("image", "readonly");
     let imageStore = imageDBTransaction.objectStore("image");
     let imageRequest = imageStore.getAll(); //Event driven
     imageRequest.onsuccess = (e) => {
@@ -73,11 +73,11 @@ function deleteListener(e) {
   let id = e.target.parentElement.getAttribute("id");
   let type = id.slice(0, 3);
   if (type === "vid") {
-    let videoDBTransaction = database.transaction("video", "readwrite");
+    let videoDBTransaction = db.transaction("video", "readwrite");
     let videoStore = videoDBTransaction.objectStore("video");
     videoStore.delete(id);
   } else if (type === "img") {
-    let imageDBTransaction = database.transaction("image", "readwrite");
+    let imageDBTransaction = db.transaction("image", "readwrite");
     let imageStore = imageDBTransaction.objectStore("image");
     imageStore.delete(id);
   }
@@ -90,7 +90,7 @@ function downloadListener(e) {
   let id = e.target.parentElement.getAttribute("id");
   let type = id.slice(0, 3);
   if (type === "vid") {
-    let videoDBTransaction = database.transaction("video", "readwrite");
+    let videoDBTransaction = db.transaction("video", "readwrite");
     let videoStore = videoDBTransaction.objectStore("video");
     let videoRequest = videoStore.get(id);
     videoRequest.onsuccess = (e) => {
@@ -104,7 +104,7 @@ function downloadListener(e) {
       a.click();
     };
   } else if (type === "img") {
-    let imageDBTransaction = database.transaction("image", "readwrite");
+    let imageDBTransaction = db.transaction("image", "readwrite");
     let imageStore = imageDBTransaction.objectStore("image");
     let imageRequest = imageStore.get(id);
     imageRequest.onsuccess = (e) => {
