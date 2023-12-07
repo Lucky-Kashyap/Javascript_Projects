@@ -165,11 +165,15 @@ For storing data use IndexedDB (Database) key-value pair
 - add eventlisteners according to it
 - Make transactions
 
-Build WebCam UI layout and MediaStream live cam feed
+Project ShowCase :
 
-Canvas API to render feed and record using MediaRecorder API
+Home Page:
 
-Processing Blobs of cam feed with synchronous storage using IndexedDB API
+![Screenshot (3155)](https://github.com/Lucky-Kashyap/Javascript_Projects/assets/88204554/23164ede-efad-4c29-ad86-af5b78076e46)
+
+Gallery Page:
+
+![Screenshot (3156)](https://github.com/Lucky-Kashyap/Javascript_Projects/assets/88204554/11312c85-859a-4198-aae8-7bd1f69f659a)
 
 Visit Web Cam Photo Gallery : [[https://photo-gallery-web.netlify.app/]]
 
