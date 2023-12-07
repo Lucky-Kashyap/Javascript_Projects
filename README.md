@@ -133,7 +133,7 @@ Approach:
 
 - Everything should be stored in localStorage
 
-  - array ko localtorage mein save krna hai
+  - array ko localstorage mein save krna hai
     array ko localstorage mein se read krna hai
 
 Project ShowCase :
@@ -145,6 +145,29 @@ Visit Expense Tracker : [[https://transaction-track.netlify.app/]]
 ### Completed Expense Tracker Assignment Using Vanilla JS.
 
 Project 9 : Web Cam
+
+Features:
+
+- Image Capturing
+- Video Recording
+- Editing Frame (Filter image & video)
+- Gallery page to view all recorded videos & pictures
+- Use Database IndexedDB API provided by Browser
+- we also delete & download data (Images & videos).
+- Responsive UI
+
+For storing data use IndexedDB (Database) key-value pair
+
+### How to configure it
+
+- Open database
+- create objectstore
+- add eventlisteners according to it
+- Make transactions
+
+Visit Web Cam Photo Gallery : [[https://photo-gallery-web.netlify.app/]]
+
+### Completed Web Cam Photo Gallery Web Application Using Vanilla JS
 
 # Upcoming Projects
 
