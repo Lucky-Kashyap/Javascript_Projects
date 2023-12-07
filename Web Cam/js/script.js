@@ -47,13 +47,32 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
     // conversion data to video
 
     let blob = new Blob(chunks, { type: "video/mp4" });
-    let videoURL = URL.createObjectURL(blob);
+    // let videoURL = URL.createObjectURL(blob);
 
-    let a = document.createElement("a");
+    // store vedios & images in database
 
-    a.href = videoURL;
-    a.download = "stream.mp4";
-    a.click();
+    if (db) {
+      // generate id
+
+      let videoID = shortid();
+
+      let databaseTransaction = db.transaction("video", "readwrite");
+
+      let videoStore = databaseTransaction.objectStore("video");
+
+      let videoEntry = {
+        id: `img-${imageID}`,
+        blobData: blob,
+      };
+
+      videoStore.add(videoEntry);
+    }
+
+    // let a = document.createElement("a");
+
+    // a.href = videoURL;
+    // a.download = "stream.mp4";
+    // a.click();
   });
 });
 
@@ -79,7 +98,7 @@ recordVideo.addEventListener("click", () => {
 recordPhoto.addEventListener("click", (e) => {
   recordPhotoBtn.classList.add("scale-capture");
 
-  console.log("photo clicked");
+  // console.log("photo clicked");
 
   if (audio.paused) {
     audio.play();
@@ -105,11 +124,28 @@ recordPhoto.addEventListener("click", (e) => {
 
   let imageURL = canvas.toDataURL();
 
-  let a = document.createElement("a");
+  if (db) {
+    // generate id
 
-  a.href = imageURL;
-  a.download = "image.jpg";
-  a.click();
+    let imageID = shortid();
+
+    let databaseTransaction = db.transaction("image", "readwrite");
+
+    let imageStore = databaseTransaction.objectStore("image");
+
+    let imageEntry = {
+      id: `img-${imageID}`,
+      url: imageURL,
+    };
+
+    imageStore.add(imageEntry);
+  }
+
+  // let a = document.createElement("a");
+
+  // a.href = imageURL;
+  // a.download = "image.jpg";
+  // a.click();
 
   setTimeout(() => {
     recordPhotoBtn.classList.remove("scale-capture");

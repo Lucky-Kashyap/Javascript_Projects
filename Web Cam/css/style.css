@@ -117,7 +117,7 @@ video {
   position: absolute;
   top: calc((100vh - 20rem) / 2);
   left: 5rem;
-  background-color: cornflowerblue;
+  background-color: rgb(172, 194, 177);
   z-index: 2;
 }
 .filter {
@@ -153,4 +153,21 @@ video {
   height: 100vh;
   width: 100vw;
   z-index: 1;
+}
+
+/* Gallery styling */
+
+.material-icons {
+  font-size: 3rem;
+  color: wheat;
+}
+
+.gallery {
+  position: absolute;
+  right: 6rem;
+  bottom: 7rem;
+  z-index: 2;
+}
+.gallery:hover {
+  cursor: pointer;
 }
