@@ -25,6 +25,15 @@ Project ShowCase :
 
 Project 3: News API based project
 
+Features:
+
+- Use News API for Displaying Data
+- Filter by clicking on different category button
+- search news by typing something and search it
+- view full image on clicking on particular image.
+
+Project ShowCase :
+
 Project 4: Quiz APP
 
 Project 5: Github User Finder Using JS
