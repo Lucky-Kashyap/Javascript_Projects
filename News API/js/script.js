@@ -7,13 +7,43 @@ function reload() {
   window.location.reload();
 }
 
+// async function fetchNews(query) {
+//   const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+//   const data = await res.json();
+//   bindData(data.articles);
+// }
+
+// async function fetchNews(query) {
+//   try {
+//     const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+//     if (!res.ok) {
+//       throw new Error(`Network response was not ok: ${res.statusText}`);
+//     }
+//     const data = await res.json();
+//     bindData(data.articles);
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// }
 async function fetchNews(query) {
-  const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
-  const data = await res.json();
-  bindData(data.articles);
+  try {
+    const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+    if (!res.ok) {
+      throw new Error(`Network response was not ok: ${res.statusText}`);
+    }
+    const data = await res.json();
+    console.log("API Response:", data); // Log the response
+    bindData(data.articles);
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+  }
 }
 
 function bindData(articles) {
+  if (!articles || !Array.isArray(articles)) {
+    console.error("Invalid data structure:", articles);
+    return;
+  }
   const cardsContainer = document.getElementById("cards-container");
   const newsCardTemplate = document.getElementById("template-news-card");
 
