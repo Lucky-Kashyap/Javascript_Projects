@@ -34,6 +34,9 @@ Features:
 
 Project ShowCase :
 
+![ezgif com-optimize](https://github.com/Lucky-Kashyap/Javascript_Projects/assets/88204554/b022600e-b7ac-4ea0-9d54-a7edd28805f0)
+
+
 Project 4: Quiz APP
 
 Project 5: Github User Finder Using JS
